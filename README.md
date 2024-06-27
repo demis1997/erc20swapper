@@ -82,62 +82,69 @@ ISwapRouter02 private router: Interface for the Uniswap V3 router.
 IWETH private weth2: Interface for the WETH token.
 IERC20 private dai: Interface for the DAI token.
 Functions
-
+```shell
 initialize
-
+```
+```shell
+function initialize(address _router, address _weth, address _dai, address initialOwner) public initializer
+```
 Initializes the contract with the given router, WETH, DAI addresses, and the owner.
 
-
-function initialize(address _router, address _weth, address _dai, address initialOwner) public initializer
-
+```shell
 _authorizeUpgrade
-
+```
 Authorizes upgrades to the contract. Can only be called by the owner.
 
-
+```shell
 function _authorizeUpgrade(address newImplementation) internal override onlyOwner
+
+```
 
 lockUpgrade
 
 Locks the contract to prevent future upgrades.
 
-
+```shell
 function lockUpgrade() external onlyOwner
+```
+
 
 swapEtherToToken
 
 Swaps ETH to a specified ERC20 token using Uniswap V3.
 
-
+```shell
 function swapEtherToToken(address token, uint minAmount) external payable returns (uint)
+```
+
 swapExactInputSingleHop
 
 Swaps an exact amount of WETH to DAI using Uniswap V3.
 
-
+```shell
 function swapExactInputSingleHop(uint256 amountIn, uint256 amountOutMin) external
+```
 receive
 
 Fallback function to receive ETH.
-
+```shell
 receive() external payable
+```
 
-Usage
 
-Deployment
-Clone the Repository: Clone the repository to your local machine.
 
-sh
-Copy code
-git clone https://github.com/your-repo/swapper.git
+```shell
 cd swapper
+```
+
 Install Dependencies: Install the necessary dependencies.
 
+```shell
+cd swapper
+```
 
-forge install
-Deployment Script: Use the following deployment script to deploy the contract.
-
-
+Deploy
+```shell
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
@@ -170,6 +177,9 @@ contract DeployScript is Script {
         vm.stopBroadcast();
     }
 }
+```
 Run Deployment Script: Ensure the environment variables are set and run the deployment script.
-
+```shell
 forge script script/Deploy.s.sol:DeployScript --rpc-url $SEPOLIA_RPC_URL --broadcast --verify -vvvv
+
+```
