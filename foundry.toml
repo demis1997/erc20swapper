@@ -1,0 +1,14 @@
+[profile.default]
+src = "src"
+out = "out"
+ffi = true
+ast = true
+libs = ["lib"]
+extra_output = ["storageLayout"]
+build_info = true
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
