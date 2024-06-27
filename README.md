@@ -83,40 +83,40 @@ IWETH private weth2: Interface for the WETH token.
 IERC20 private dai: Interface for the DAI token.
 Functions
 
-####initialize
+initialize
 
 Initializes the contract with the given router, WETH, DAI addresses, and the owner.
 
 
 function initialize(address _router, address _weth, address _dai, address initialOwner) public initializer
 
-####_authorizeUpgrade
+_authorizeUpgrade
 
 Authorizes upgrades to the contract. Can only be called by the owner.
 
 
 function _authorizeUpgrade(address newImplementation) internal override onlyOwner
 
-####lockUpgrade
+lockUpgrade
 
 Locks the contract to prevent future upgrades.
 
 
 function lockUpgrade() external onlyOwner
 
-####swapEtherToToken
+swapEtherToToken
 
 Swaps ETH to a specified ERC20 token using Uniswap V3.
 
 
 function swapEtherToToken(address token, uint minAmount) external payable returns (uint)
-####swapExactInputSingleHop
+swapExactInputSingleHop
 
 Swaps an exact amount of WETH to DAI using Uniswap V3.
 
 
 function swapExactInputSingleHop(uint256 amountIn, uint256 amountOutMin) external
-####receive
+receive
 
 Fallback function to receive ETH.
 
